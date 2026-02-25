@@ -12,48 +12,7 @@ const io = new Server(server, {
 });
 
 // ---- SONG DATABASE ----
-const SONGS = [
-  { id:1,title:"Bohemian Rhapsody",artist:"Queen",year:1975,q:"Bohemian Rhapsody Queen" },
-  { id:2,title:"Billie Jean",artist:"Michael Jackson",year:1982,q:"Billie Jean Michael Jackson" },
-  { id:3,title:"Smells Like Teen Spirit",artist:"Nirvana",year:1991,q:"Smells Like Teen Spirit Nirvana" },
-  { id:4,title:"Shape of You",artist:"Ed Sheeran",year:2017,q:"Shape of You Ed Sheeran" },
-  { id:5,title:"Rolling in the Deep",artist:"Adele",year:2010,q:"Rolling in the Deep Adele" },
-  { id:6,title:"Sweet Child O' Mine",artist:"Guns N' Roses",year:1987,q:"Sweet Child O Mine Guns N Roses" },
-  { id:7,title:"Wonderwall",artist:"Oasis",year:1995,q:"Wonderwall Oasis" },
-  { id:8,title:"Take On Me",artist:"a-ha",year:1985,q:"Take On Me a-ha" },
-  { id:9,title:"Blinding Lights",artist:"The Weeknd",year:2019,q:"Blinding Lights Weeknd" },
-  { id:10,title:"Stayin' Alive",artist:"Bee Gees",year:1977,q:"Stayin Alive Bee Gees" },
-  { id:11,title:"Like a Virgin",artist:"Madonna",year:1984,q:"Like a Virgin Madonna" },
-  { id:12,title:"Lose Yourself",artist:"Eminem",year:2002,q:"Lose Yourself Eminem" },
-  { id:13,title:"Crazy in Love",artist:"Beyoncé",year:2003,q:"Crazy in Love Beyonce" },
-  { id:14,title:"Mr. Brightside",artist:"The Killers",year:2003,q:"Mr Brightside Killers" },
-  { id:15,title:"Don't Stop Believin'",artist:"Journey",year:1981,q:"Dont Stop Believin Journey" },
-  { id:16,title:"Thriller",artist:"Michael Jackson",year:1982,q:"Thriller Michael Jackson" },
-  { id:17,title:"Hotel California",artist:"Eagles",year:1976,q:"Hotel California Eagles" },
-  { id:18,title:"I Will Always Love You",artist:"Whitney Houston",year:1992,q:"I Will Always Love You Whitney Houston" },
-  { id:19,title:"Uptown Funk",artist:"Bruno Mars",year:2014,q:"Uptown Funk Bruno Mars" },
-  { id:20,title:"Somebody That I Used to Know",artist:"Gotye",year:2011,q:"Somebody That I Used to Know Gotye" },
-  { id:21,title:"Hey Jude",artist:"The Beatles",year:1968,q:"Hey Jude Beatles" },
-  { id:22,title:"Superstition",artist:"Stevie Wonder",year:1972,q:"Superstition Stevie Wonder" },
-  { id:23,title:"Dancing Queen",artist:"ABBA",year:1976,q:"Dancing Queen ABBA" },
-  { id:24,title:"Under Pressure",artist:"Queen & David Bowie",year:1981,q:"Under Pressure Queen Bowie" },
-  { id:25,title:"Every Breath You Take",artist:"The Police",year:1983,q:"Every Breath You Take Police" },
-  { id:26,title:"With or Without You",artist:"U2",year:1987,q:"With or Without You U2" },
-  { id:27,title:"Creep",artist:"Radiohead",year:1992,q:"Creep Radiohead" },
-  { id:28,title:"Gangsta's Paradise",artist:"Coolio",year:1995,q:"Gangsta Paradise Coolio" },
-  { id:29,title:"Say My Name",artist:"Destiny's Child",year:1999,q:"Say My Name Destinys Child" },
-  { id:30,title:"In Da Club",artist:"50 Cent",year:2003,q:"In Da Club 50 Cent" },
-  { id:31,title:"Toxic",artist:"Britney Spears",year:2003,q:"Toxic Britney Spears" },
-  { id:32,title:"Umbrella",artist:"Rihanna",year:2007,q:"Umbrella Rihanna" },
-  { id:33,title:"Poker Face",artist:"Lady Gaga",year:2008,q:"Poker Face Lady Gaga" },
-  { id:34,title:"Get Lucky",artist:"Daft Punk",year:2013,q:"Get Lucky Daft Punk" },
-  { id:35,title:"Old Town Road",artist:"Lil Nas X",year:2019,q:"Old Town Road Lil Nas X" },
-  { id:36,title:"As It Was",artist:"Harry Styles",year:2022,q:"As It Was Harry Styles" },
-  { id:37,title:"Respect",artist:"Aretha Franklin",year:1967,q:"Respect Aretha Franklin" },
-  { id:38,title:"Imagine",artist:"John Lennon",year:1971,q:"Imagine John Lennon" },
-  { id:39,title:"Stairway to Heaven",artist:"Led Zeppelin",year:1971,q:"Stairway to Heaven Led Zeppelin" },
-  { id:40,title:"Rapper's Delight",artist:"Sugarhill Gang",year:1979,q:"Rappers Delight Sugarhill Gang" },
-];
+const SONGS = require("./songs.js");
 
 function shuffle(arr) {
   const s = [...arr];
