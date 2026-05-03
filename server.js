@@ -161,6 +161,7 @@ io.on("connection", (socket) => {
       rounds,
       players: [{ id: socket.id, name, score: 0 }],
       songs,
+      playedSongs: new Set(), // Track all played song IDs across games
       currentRound: 0,
       guesses: {},
       state: "lobby",
@@ -205,7 +206,10 @@ io.on("connection", (socket) => {
     if (!currentRoom || !rooms[currentRoom]) return;
     const room = rooms[currentRoom];
     if (room.host !== socket.id) return;
-    if (room.players.length < 2) return;
+    if (room.players.length < 1) return;
+
+    // Mark all songs in this round as played
+    room.songs.forEach(s => room.playedSongs.add(s.id));
 
     room.currentRound = 1;
     room.guesses = {};
@@ -291,7 +295,18 @@ io.on("connection", (socket) => {
     const room = rooms[currentRoom];
     if (room.host !== socket.id) return;
 
-    room.songs = shuffle(SONGS).slice(0, Math.min(room.rounds, SONGS.length));
+    // Filter out already played songs
+    const available = SONGS.filter(s => !room.playedSongs.has(s.id));
+    
+    // If we've exhausted all songs, reset the pool
+    if (available.length < room.rounds) {
+      console.log(`Room ${currentRoom}: All songs played, resetting pool`);
+      room.playedSongs.clear();
+      room.songs = shuffle(SONGS).slice(0, Math.min(room.rounds, SONGS.length));
+    } else {
+      room.songs = shuffle(available).slice(0, Math.min(room.rounds, available.length));
+    }
+
     room.currentRound = 0;
     room.guesses = {};
     room.state = "lobby";
